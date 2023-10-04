@@ -1,71 +1,71 @@
 /**
  * @file
- * Implements Timezone meta strategy.
+ * Implements Weekday meta strategy.
  */
 
 // Prevents processing this includes file multiple times.
-#ifndef STG_META_TIMEZONE_MQH
-#define STG_META_TIMEZONE_MQH
+#ifndef STG_META_WEEKDAY_MQH
+#define STG_META_WEEKDAY_MQH
 
 // User input params.
-INPUT2_GROUP("Meta Timezone strategy: main params");
-INPUT2 ENUM_STRATEGY Meta_Timezone_Strategy_London = STRAT_DEMARKER;   // London market hours strategy
-INPUT2 ENUM_STRATEGY Meta_Timezone_Strategy_NewYork = STRAT_ICHIMOKU;  // New York market hours strategy
-INPUT2 ENUM_STRATEGY Meta_Timezone_Strategy_Sydney = STRAT_BANDS;      // Sydney market hours strategy
-INPUT2 ENUM_STRATEGY Meta_Timezone_Strategy_Tokyo = STRAT_ENVELOPES;   // Tokyo market hours strategy
-INPUT2_GROUP("Meta Timezone strategy: common params");
-INPUT2 float Meta_Timezone_LotSize = 0;                // Lot size
-INPUT2 int Meta_Timezone_SignalOpenMethod = 0;         // Signal open method
-INPUT2 float Meta_Timezone_SignalOpenLevel = 0;        // Signal open level
-INPUT2 int Meta_Timezone_SignalOpenFilterMethod = 32;  // Signal open filter method
-INPUT2 int Meta_Timezone_SignalOpenFilterTime = 3;     // Signal open filter time (0-31)
-INPUT2 int Meta_Timezone_SignalOpenBoostMethod = 0;    // Signal open boost method
-INPUT2 int Meta_Timezone_SignalCloseMethod = 0;        // Signal close method
-INPUT2 int Meta_Timezone_SignalCloseFilter = 32;       // Signal close filter (-127-127)
-INPUT2 float Meta_Timezone_SignalCloseLevel = 0;       // Signal close level
-INPUT2 int Meta_Timezone_PriceStopMethod = 0;          // Price limit method
-INPUT2 float Meta_Timezone_PriceStopLevel = 2;         // Price limit level
-INPUT2 int Meta_Timezone_TickFilterMethod = 32;        // Tick filter method (0-255)
-INPUT2 float Meta_Timezone_MaxSpread = 4.0;            // Max spread to trade (in pips)
-INPUT2 short Meta_Timezone_Shift = 0;                  // Shift
-INPUT2 float Meta_Timezone_OrderCloseLoss = 30;        // Order close loss
-INPUT2 float Meta_Timezone_OrderCloseProfit = 30;      // Order close profit
-INPUT2 int Meta_Timezone_OrderCloseTime = -10;         // Order close time in mins (>0) or bars (<0)
+INPUT2_GROUP("Meta Weekday strategy: main params");
+INPUT2 ENUM_STRATEGY Meta_Weekday_Strategy_London = STRAT_DEMARKER;   // London market hours strategy
+INPUT2 ENUM_STRATEGY Meta_Weekday_Strategy_NewYork = STRAT_ICHIMOKU;  // New York market hours strategy
+INPUT2 ENUM_STRATEGY Meta_Weekday_Strategy_Sydney = STRAT_BANDS;      // Sydney market hours strategy
+INPUT2 ENUM_STRATEGY Meta_Weekday_Strategy_Tokyo = STRAT_ENVELOPES;   // Tokyo market hours strategy
+INPUT2_GROUP("Meta Weekday strategy: common params");
+INPUT2 float Meta_Weekday_LotSize = 0;                // Lot size
+INPUT2 int Meta_Weekday_SignalOpenMethod = 0;         // Signal open method
+INPUT2 float Meta_Weekday_SignalOpenLevel = 0;        // Signal open level
+INPUT2 int Meta_Weekday_SignalOpenFilterMethod = 32;  // Signal open filter method
+INPUT2 int Meta_Weekday_SignalOpenFilterTime = 3;     // Signal open filter time (0-31)
+INPUT2 int Meta_Weekday_SignalOpenBoostMethod = 0;    // Signal open boost method
+INPUT2 int Meta_Weekday_SignalCloseMethod = 0;        // Signal close method
+INPUT2 int Meta_Weekday_SignalCloseFilter = 32;       // Signal close filter (-127-127)
+INPUT2 float Meta_Weekday_SignalCloseLevel = 0;       // Signal close level
+INPUT2 int Meta_Weekday_PriceStopMethod = 0;          // Price limit method
+INPUT2 float Meta_Weekday_PriceStopLevel = 2;         // Price limit level
+INPUT2 int Meta_Weekday_TickFilterMethod = 32;        // Tick filter method (0-255)
+INPUT2 float Meta_Weekday_MaxSpread = 4.0;            // Max spread to trade (in pips)
+INPUT2 short Meta_Weekday_Shift = 0;                  // Shift
+INPUT2 float Meta_Weekday_OrderCloseLoss = 30;        // Order close loss
+INPUT2 float Meta_Weekday_OrderCloseProfit = 30;      // Order close profit
+INPUT2 int Meta_Weekday_OrderCloseTime = -10;         // Order close time in mins (>0) or bars (<0)
 
 // Structs.
 
 // Defines struct with default user strategy values.
-struct Stg_Meta_Timezone_Params_Defaults : StgParams {
-  Stg_Meta_Timezone_Params_Defaults()
-      : StgParams(::Meta_Timezone_SignalOpenMethod, ::Meta_Timezone_SignalOpenFilterMethod,
-                  ::Meta_Timezone_SignalOpenLevel, ::Meta_Timezone_SignalOpenBoostMethod,
-                  ::Meta_Timezone_SignalCloseMethod, ::Meta_Timezone_SignalCloseFilter,
-                  ::Meta_Timezone_SignalCloseLevel, ::Meta_Timezone_PriceStopMethod, ::Meta_Timezone_PriceStopLevel,
-                  ::Meta_Timezone_TickFilterMethod, ::Meta_Timezone_MaxSpread, ::Meta_Timezone_Shift) {
-    Set(STRAT_PARAM_LS, ::Meta_Timezone_LotSize);
-    Set(STRAT_PARAM_OCL, ::Meta_Timezone_OrderCloseLoss);
-    Set(STRAT_PARAM_OCP, ::Meta_Timezone_OrderCloseProfit);
-    Set(STRAT_PARAM_OCT, ::Meta_Timezone_OrderCloseTime);
-    Set(STRAT_PARAM_SOFT, ::Meta_Timezone_SignalOpenFilterTime);
+struct Stg_Meta_Weekday_Params_Defaults : StgParams {
+  Stg_Meta_Weekday_Params_Defaults()
+      : StgParams(::Meta_Weekday_SignalOpenMethod, ::Meta_Weekday_SignalOpenFilterMethod,
+                  ::Meta_Weekday_SignalOpenLevel, ::Meta_Weekday_SignalOpenBoostMethod,
+                  ::Meta_Weekday_SignalCloseMethod, ::Meta_Weekday_SignalCloseFilter, ::Meta_Weekday_SignalCloseLevel,
+                  ::Meta_Weekday_PriceStopMethod, ::Meta_Weekday_PriceStopLevel, ::Meta_Weekday_TickFilterMethod,
+                  ::Meta_Weekday_MaxSpread, ::Meta_Weekday_Shift) {
+    Set(STRAT_PARAM_LS, ::Meta_Weekday_LotSize);
+    Set(STRAT_PARAM_OCL, ::Meta_Weekday_OrderCloseLoss);
+    Set(STRAT_PARAM_OCP, ::Meta_Weekday_OrderCloseProfit);
+    Set(STRAT_PARAM_OCT, ::Meta_Weekday_OrderCloseTime);
+    Set(STRAT_PARAM_SOFT, ::Meta_Weekday_SignalOpenFilterTime);
   }
 };
 
-class Stg_Meta_Timezone : public Strategy {
+class Stg_Meta_Weekday : public Strategy {
  protected:
   DictStruct<long, Ref<Strategy>> strats;
 
  public:
-  Stg_Meta_Timezone(StgParams &_sparams, TradeParams &_tparams, ChartParams &_cparams, string _name = "")
+  Stg_Meta_Weekday(StgParams &_sparams, TradeParams &_tparams, ChartParams &_cparams, string _name = "")
       : Strategy(_sparams, _tparams, _cparams, _name) {}
 
-  static Stg_Meta_Timezone *Init(ENUM_TIMEFRAMES _tf = NULL, EA *_ea = NULL) {
+  static Stg_Meta_Weekday *Init(ENUM_TIMEFRAMES _tf = NULL, EA *_ea = NULL) {
     // Initialize strategy initial values.
-    Stg_Meta_Timezone_Params_Defaults stg_timezone_defaults;
-    StgParams _stg_params(stg_timezone_defaults);
+    Stg_Meta_Weekday_Params_Defaults stg_meta_weekday_defaults;
+    StgParams _stg_params(stg_meta_weekday_defaults);
     // Initialize Strategy instance.
     ChartParams _cparams(_tf, _Symbol);
     TradeParams _tparams;
-    Strategy *_strat = new Stg_Meta_Timezone(_stg_params, _tparams, _cparams, "(Meta) Timezone");
+    Strategy *_strat = new Stg_Meta_Weekday(_stg_params, _tparams, _cparams, "(Meta) Weekday");
     return _strat;
   }
 
@@ -73,10 +73,10 @@ class Stg_Meta_Timezone : public Strategy {
    * Event on strategy's init.
    */
   void OnInit() {
-    StrategyAdd(Meta_Timezone_Strategy_London, STRUCT_ENUM(MarketTimeForex, MARKET_TIME_FOREX_HOURS_LONDON));
-    StrategyAdd(Meta_Timezone_Strategy_NewYork, STRUCT_ENUM(MarketTimeForex, MARKET_TIME_FOREX_HOURS_NEWYORK));
-    StrategyAdd(Meta_Timezone_Strategy_Sydney, STRUCT_ENUM(MarketTimeForex, MARKET_TIME_FOREX_HOURS_SYDNEY));
-    StrategyAdd(Meta_Timezone_Strategy_Tokyo, STRUCT_ENUM(MarketTimeForex, MARKET_TIME_FOREX_HOURS_TOKYO));
+    StrategyAdd(Meta_Weekday_Strategy_London, STRUCT_ENUM(MarketTimeForex, MARKET_TIME_FOREX_HOURS_LONDON));
+    StrategyAdd(Meta_Weekday_Strategy_NewYork, STRUCT_ENUM(MarketTimeForex, MARKET_TIME_FOREX_HOURS_NEWYORK));
+    StrategyAdd(Meta_Weekday_Strategy_Sydney, STRUCT_ENUM(MarketTimeForex, MARKET_TIME_FOREX_HOURS_SYDNEY));
+    StrategyAdd(Meta_Weekday_Strategy_Tokyo, STRUCT_ENUM(MarketTimeForex, MARKET_TIME_FOREX_HOURS_TOKYO));
   }
 
   /**
@@ -331,4 +331,4 @@ class Stg_Meta_Timezone : public Strategy {
   }
 };
 
-#endif  // STG_META_TIMEZONE_MQH
+#endif  // STG_META_WEEKDAY_MQH

@@ -1,6 +1,6 @@
 /**
  * @file
- * Implements Timezone meta strategy.
+ * Implements Weekday meta strategy.
  */
 
 // Includes conditional compilation directives.
@@ -37,10 +37,10 @@ input bool Info_On_Chart = true;          // Display info on chart.
 #include "Stg_Meta_Weekday.mqh"
 
 // Defines.
-#define ea_name "Strategy Meta Timezone"
+#define ea_name "Strategy Meta Weekday"
 #define ea_version "2.000"
 #define ea_desc "Meta strategy to run different strategies in the different market time zones."
-#define ea_link "https://github.com/EA31337/Strategy-Meta_Timezone"
+#define ea_link "https://github.com/EA31337/Strategy-Meta_Weekday"
 #define ea_author "EA31337 Ltd"
 
 // Properties.
@@ -66,7 +66,7 @@ int OnInit() {
   bool _result = true;
   EAParams ea_params(__FILE__, Log_Level);
   ea = new EA(ea_params);
-  _result &= ea.StrategyAdd<Stg_Meta_Timezone>(Active_Tfs);
+  _result &= ea.StrategyAdd<Stg_Meta_Weekday>(Active_Tfs);
   return (_result ? INIT_SUCCEEDED : INIT_FAILED);
 }
 
