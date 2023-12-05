@@ -9,11 +9,11 @@
 
 // User input params.
 INPUT2_GROUP("Meta Weekday strategy: main params");
-INPUT2 ENUM_STRATEGY Meta_Weekday_Strategy_1_Monday = STRAT_OSCILLATOR_RANGE;   // Monday's strategy
-INPUT2 ENUM_STRATEGY Meta_Weekday_Strategy_2_Tuesday = STRAT_OSCILLATOR_RANGE;  // Tuesday's strategy
-INPUT2 ENUM_STRATEGY Meta_Weekday_Strategy_3_Wednesday = STRAT_MA_CROSS_PIVOT;  // Wednesday's strategy
-INPUT2 ENUM_STRATEGY Meta_Weekday_Strategy_4_Thursday = STRAT_MA_CROSS_SHIFT;   // Thursday's strategy
-INPUT2 ENUM_STRATEGY Meta_Weekday_Strategy_5_Friday = STRAT_DEMARKER;           // Friday's strategy
+INPUT2 ENUM_STRATEGY Meta_Weekday_Strategy_1_Monday = STRAT_ICHIMOKU;            // Monday's strategy
+INPUT2 ENUM_STRATEGY Meta_Weekday_Strategy_2_Tuesday = STRAT_ICHIMOKU;           // Tuesday's strategy
+INPUT2 ENUM_STRATEGY Meta_Weekday_Strategy_3_Wednesday = STRAT_HEIKEN_ASHI;      // Wednesday's strategy
+INPUT2 ENUM_STRATEGY Meta_Weekday_Strategy_4_Thursday = STRAT_OSCILLATOR_TREND;  // Thursday's strategy
+INPUT2 ENUM_STRATEGY Meta_Weekday_Strategy_5_Friday = STRAT_MACD;                // Friday's strategy
 INPUT3_GROUP("Meta Weekday strategy: common params");
 INPUT3 float Meta_Weekday_LotSize = 0;                // Lot size
 INPUT3 int Meta_Weekday_SignalOpenMethod = 0;         // Signal open method
